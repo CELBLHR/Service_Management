@@ -1,4 +1,6 @@
 // 主应用类
+import { initRouter } from './router.js';
+
 class App {
     constructor() {
         this.sidebar = document.getElementById('sidebar');
@@ -36,7 +38,7 @@ class App {
     
     // 初始化路由
     initRouter() {
-        window.router = new Router();
+        initRouter();
     }
     
     // 初始化侧边栏

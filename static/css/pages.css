@@ -1,0 +1,373 @@
+/* 页面特定样式 */
+
+/* ===== 控制台页面 ===== */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.dashboard-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+.dashboard-left,
+.dashboard-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.activity-item:hover {
+    background-color: #f9fafb;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #e6f7ff;
+    color: #1677ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-title {
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 4px;
+}
+
+.activity-desc {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.activity-time {
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.action-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.action-item:hover {
+    border-color: #1677ff;
+    background-color: #f6f8ff;
+    transform: translateX(4px);
+}
+
+.action-item i {
+    font-size: 18px;
+    color: #1677ff;
+    width: 20px;
+}
+
+/* ===== 客服管理页面 ===== */
+.customer-service {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.service-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.service-list {
+    min-height: 400px;
+}
+
+.service-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.service-table th,
+.service-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.service-table th {
+    background-color: #fafafa;
+    font-weight: 600;
+    color: #374151;
+    font-size: 14px;
+}
+
+.service-table tr:hover {
+    background-color: #f9fafb;
+}
+
+.avatar-cell {
+    width: 60px;
+}
+
+.id-cell {
+    width: 200px;
+}
+
+.name-cell {
+    width: 150px;
+}
+
+.privilege-cell {
+    width: 120px;
+}
+
+.scene-cell {
+    width: 120px;
+}
+
+.action-cell {
+    width: 100px;
+}
+
+.service-id {
+    background: #f3f4f6;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.service-id:hover {
+    background: #e5e7eb;
+}
+
+.service-id.copied {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.service-name {
+    font-weight: 500;
+    color: #1f2937;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* ===== 客户管理页面 ===== */
+.customer-manage {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.customer-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.customer-list {
+    min-height: 400px;
+}
+
+.customer-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.customer-table th,
+.customer-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.customer-table th {
+    background-color: #fafafa;
+    font-weight: 600;
+    color: #374151;
+    font-size: 14px;
+}
+
+.customer-table tr:hover {
+    background-color: #f9fafb;
+}
+
+/* ===== 会话管理页面 ===== */
+.conversation-manage {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.conversation-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.conversation-list {
+    min-height: 400px;
+}
+
+.conversation-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.conversation-table th,
+.conversation-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.conversation-table th {
+    background-color: #fafafa;
+    font-weight: 600;
+    color: #374151;
+    font-size: 14px;
+}
+
+.conversation-table tr:hover {
+    background-color: #f9fafb;
+}
+
+/* ===== 响应式页面布局 ===== */
+@media (max-width: 768px) {
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-actions,
+    .customer-actions,
+    .conversation-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .service-table,
+    .customer-table,
+    .conversation-table {
+        font-size: 12px;
+    }
+    
+    .service-table th,
+    .service-table td,
+    .customer-table th,
+    .customer-table td,
+    .conversation-table th,
+    .conversation-table td {
+        padding: 8px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 4px;
+    }
+}

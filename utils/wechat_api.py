@@ -21,38 +21,54 @@ class WeChatAPI:
         if self.access_token and time.time() < self.token_expires_at:
             return self.access_token
         
-        # 获取新token
-        url = f"{self.base_url}/gettoken"
-        params = {
-            'corpid': self.corp_id,
-            'corpsecret': self.secret
-        }
-        
-        response = requests.get(url, params=params)
-        result = response.json()
-        
-        if result.get('errcode') == 0:
-            self.access_token = result['access_token']
-            # token有效期7200秒，提前10分钟刷新
-            self.token_expires_at = time.time() + result['expires_in'] - 600
-            return self.access_token
-        else:
-            raise Exception(f"获取access_token失败: {result}")
+        try:
+            # 获取新token
+            url = f"{self.base_url}/gettoken"
+            params = {
+                'corpid': self.corp_id,
+                'corpsecret': self.secret
+            }
+            
+            response = requests.get(url, params=params)
+            result = response.json()
+            
+            if result.get('errcode') == 0:
+                self.access_token = result['access_token']
+                # token有效期7200秒，提前10分钟刷新
+                self.token_expires_at = time.time() + result['expires_in'] - 600
+                return self.access_token
+            else:
+                # 企业微信API错误，返回完整错误信息
+                raise Exception(f"企业微信API错误: {result}")
+        except requests.exceptions.RequestException as e:
+            # 网络请求错误，包含详细的连接信息
+            raise Exception(f"网络请求失败: {str(e)}")
+        except Exception as e:
+            # 其他错误
+            raise Exception(f"获取access_token失败: {str(e)}")
 
     #获取部门列表
     def get_departments(self):
         """获取部门列表"""
-        token = self.get_access_token()
-        url = f"{self.base_url}/department/list"
-        params = {'access_token': token}
-        
-        response = requests.get(url, params=params)
-        result = response.json()
-        
-        if result.get('errcode') == 0:
-            return result['department']
-        else:
-            raise Exception(f"获取部门列表失败: {result}")
+        try:
+            token = self.get_access_token()
+            url = f"{self.base_url}/department/list"
+            params = {'access_token': token}
+            
+            response = requests.get(url, params=params)
+            result = response.json()
+            
+            if result.get('errcode') == 0:
+                return result['department']
+            else:
+                # 企业微信API错误，返回完整错误信息
+                raise Exception(f"企业微信API错误: {result}")
+        except requests.exceptions.RequestException as e:
+            # 网络请求错误，包含详细的连接信息
+            raise Exception(f"网络请求失败: {str(e)}")
+        except Exception as e:
+            # 其他错误
+            raise Exception(f"获取部门列表失败: {str(e)}")
 
 
     #发送消息给指定用户
@@ -151,22 +167,30 @@ class WeChatAPI:
     # 获取客服列表
     def get_kfs(self,offset=0,limit=10):
         """获取客服列表"""
-        token = self.get_access_token()
-        url = f"{self.base_url}/kf/account/list"
-        params = {
-            'access_token': token,
-        }
-        data={
-            "offset": offset,#偏移量
-            "limit": limit#返回客服数量最大值，这两个参数适用于客服太多时分页显示
-        }
-        response = requests.post(url, params=params,json=data)
-        result = response.json()
+        try:
+            token = self.get_access_token()
+            url = f"{self.base_url}/kf/account/list"
+            params = {
+                'access_token': token,
+            }
+            data={
+                "offset": offset,#偏移量
+                "limit": limit#返回客服数量最大值，这两个参数适用于客服太多时分页显示
+            }
+            response = requests.post(url, params=params,json=data)
+            result = response.json()
 
-        if result.get('errcode') == 0:
-            return result
-        else:
-            raise Exception(f"获取客服列表失败: {result}")
+            if result.get('errcode') == 0:
+                return result
+            else:
+                # 企业微信API错误，返回完整错误信息
+                raise Exception(f"企业微信API错误: {result}")
+        except requests.exceptions.RequestException as e:
+            # 网络请求错误，包含详细的连接信息
+            raise Exception(f"网络请求失败: {str(e)}")
+        except Exception as e:
+            # 其他错误
+            raise Exception(f"获取客服列表失败: {str(e)}")
 
     #获取客服账号链接
     def get_kf_url(self,open_kfid,scene=None):
